@@ -17,9 +17,24 @@
 
 # Probeer het eerst zonder loop,
 
+getal_invoer = int(input("Voer hier uw getal in: "))
+print(f"{getal_invoer} x 1 = {getal_invoer * 1}")
+print(f"{getal_invoer} x 2 = {getal_invoer * 2}")
+print(f"{getal_invoer} x 3 = {getal_invoer * 3}")
+print(f"{getal_invoer} x 4 = {getal_invoer * 4}")
+print(f"{getal_invoer} x 5 = {getal_invoer * 5}")
+print(f"{getal_invoer} x 6 = {getal_invoer * 6}")
+print(f"{getal_invoer} x 7 = {getal_invoer * 7}")
+print(f"{getal_invoer} x 8 = {getal_invoer * 8}")
+print(f"{getal_invoer} x 9 = {getal_invoer * 9}")
+print(f"{getal_invoer} x 10 = {getal_invoer * 10}")
 
 # Probeer het nu met een loop.
 
+getal_invoer2 = int(input("Voer een getal in: "))
+
+for getal in range(1,11):
+    print(f"{getal_invoer2} * {getal} = {getal_invoer2 * getal}")
 
 # --------------------------------------------------------------------------------------------
 
@@ -28,7 +43,14 @@
 
 # Bijvoorbeeld: de som van alle getallen tot 3 is 6 (1 + 2 + 3 = 6)
 
+invoer = int(input("Voer een getal in: "))
+teller = 1
+som = 0
 
+while som <= invoer:
+    som += teller
+    teller += 1
+print(f"De som van de getallen {invoer} is {som}")
 
 # --------------------------------------------------------------------------------------------
 
@@ -36,37 +58,21 @@
 # FizzBuzz
 
 # Schrijf een programma dat de getallen van 1 tot 100 afdrukt.
+
+for getal in range(1, 101):
+    if getal % 3 == 0 and getal % 5 == 0:
+        print("FizzBuzz")
+    elif getal % 3 == 0:
+        print("Fizz")
+    elif getal % 5 == 0:
+        print("Buzz")
+    else:
+        print(getal)
+
 # Maar voor veelvouden van drie, druk "Fizz" af in plaats van het getal.
+
+
 # En voor veelvouden van vijf, druk "Buzz" af.
 # Voor veelvouden van zowel drie als vijf, druk "FizzBuzz" af.
 
 
-
-# --------------------------------------------------------------------------------------------
-
-
-# Fibonacci-reeks
-
-# De eerste twee getallen van de Fibonacci-reeks zijn 0 en 1.
-# Elk volgend getal is de som van de twee voorgaande.
-# De eerste 10 getallen van de Fibonacci-reeks zijn:
-# 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
-# 0 + 1 = 1
-# 1 + 1 = 2
-# 1 + 2 = 3
-# 2 + 3 = 5
-# 3 + 5 = 8
-# 5 + 8 = 13
-# 8 + 13 = 21
-# 13 + 21 = 34
-
-i = int(input("Hoeveel Fibonacci-getallen wil je zien? "))
-
-# De eerste twee getallen van de Fibonacci-reeks zijn 0 en 1
-a = 0
-b = 1
-
-# Eerst drukken we de eerste twee getallen af
-
-
-# Vervolgens berekenen we de volgende getallen en drukken ze af
