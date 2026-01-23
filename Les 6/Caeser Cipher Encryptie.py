@@ -85,7 +85,7 @@ def while_functie():
             return invoer
         elif invoer == "n":
             print("Bedankt en tot de volgende keer!")
-            break
+            return False
         else:
             print("Verkeerde invoer, probeer het nog eens")
 
@@ -96,15 +96,17 @@ def main():
 
         if keuze == "encode":
             print("the encoded text is:", encode())
+            if not while_functie():
+                break
         elif keuze == "decode":
             print("the decoded text is:", decode())
+            if not while_functie():
+                break
+
         else:
             print("Verkeerde keuze, typ 'encode' of 'decode'.")
             continue
 
-        opnieuw = while_functie()
-        if opnieuw == "n":
-            break
 
 main()
 
