@@ -1,24 +1,50 @@
-# Wat is Triviant?
-# We gaan een Triviant spel maken. Triviant is een spelletje waar je vragen moet beantwoorden. Wij gaan een digitale versie maken die in de commandline
-# (terminal) gespeeld kan worden.
-#
-# Randvoorwaarden
-# Je maakt gebruik van de opentdb API.
-# De vragen die je stelt zijn multiple choice vragen vanuit de API, dit kunnen 2 of 4 antwoorden zijn.
-# Stappenplan
-# 1. Kijk op de website van de opentdb API en bekijk hoe je de API kunt gebruiken.
-# 2. Maak een nieuwe python file aan en noem deze triviant.py.
-# 3. Maak een functie get_question() die een vraag ophaalt van de API en deze teruggeeft.
-# Stappenplan voor stap 3
-# 4. Functie voor het printen van vragen
-# Stappenplan voor stap 4
-# 5. Functie voor het vragen van het antwoord van de speler
-# Stappenplan voor stap 5
-# 6. Functie voor het controleren van het antwoord
-# Stappenplan voor stap 6
-# 7. Functie voor het spelen van het spel
-# Stappenplan voor stap 7
-# 8. Functie voor het starten van het spel (main)
-# Stappenplan voor stap 8
-# Bonus
-# Probeer in je spel eens uit hoe je meerdere spelers kunt laten spelen. Hier kun je gebruik maken van de dictionary om de naam van de speler en zijn score bij te houden. De spelers krijgen om de beurt een vraag en kunnen punten verdienen.
+import requests
+
+def refactor_sentence(sentence):
+    if '&' in sentence:
+        sentence = sentence.replace('&quot;', '"') \
+                           .replace('&#039;', "'") \
+                           .replace('&amp;', '&') \
+                           .replace('&lt;', '<') \
+                           .replace('&gt;', '>')
+    return sentence
+
+
+def get_trivia_vraag():
+    url = "https://opentdb.com/api.php?amount=10&type=boolean"
+    response = requests.get(url)
+    if response.ok:
+        data = (response.json())
+        vraag = (data["results"][0]["question"])
+        vraag = refactor_sentence(vraag)
+
+        correct_answer = data['results'][0]['correct_answer']
+        incorrect_answers = data['results'][0]['incorrect_answers']
+        options = incorrect_answers + [correct_answer]
+        options.sort(reverse=True)
+        return vraag, correct_answer, options
+    else:
+        print(f"Er is iets misgegaan. Status code: {response.status_code}")
+
+
+def display_vraag(vraag, options):
+    print("\n"+ vraag)
+    for nummers, option in enumerate(options, start=1):
+        print(f"{nummers}. {option}")
+
+def get_user_answer():
+    while True:
+        keuze = input("Kies 1 of 2: ").strip()
+        if keuze in ("1", "2"):
+            return int(keuze)
+        else:
+            print("Ongeldige invoer. Typ 1 of 2.")
+
+
+
+
+
+
+
+
+
