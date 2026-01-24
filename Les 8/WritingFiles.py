@@ -6,7 +6,7 @@ employee = {
     "age": 30,
     "job": "cook"
 }
-file_path = "output.txt"
+file_path = "output.json"
 
 try:
     with open (file_path, "w") as file:
